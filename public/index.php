@@ -10,6 +10,14 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
    	{
-   		
+   		$link = $_POST["link"];
+   		if (empty($link))
+        {
+            apologize("You must enter a link.");
+        }
+        else
+        {
+        	// Start Scraping
+        }
    	}
 ?>

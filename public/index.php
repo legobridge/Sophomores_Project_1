@@ -12,12 +12,12 @@
    	{
    		$link = $_POST["link"];
    		if (empty($link))
-        {
-            apologize("You must enter a link.");
-        }
-        else
-        {
-        	// Start Scraping
-        }
+      {
+          apologize("You must enter a link.");
+      }
+      else
+      {
+      	// Start Scraping
+      }
    	}
 ?>

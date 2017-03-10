@@ -16,10 +16,17 @@ function makeRequests(url)
 	var r1 = new RegExp("\\?[\\s\\S]*");
 	var url = url.replace(r1, "");
 
-	// Replace any digits in base URL with 1 to get first page
 	var r2 = new RegExp("[\\d]+");
-	url = url.replace(r2, 1);
-
+	if (r2.test(url))
+	{
+		// Replace any digits in base URL with 1 to get first page
+		url = url.replace(r2, 1);
+	}
+	else
+	{
+		// If no digits found, add 1 at the end
+		url += "-1";
+	}
 	pageRequest(url, 1);
 }
 
@@ -34,7 +41,7 @@ function pageRequest(url, pn)
 	.done(function(data, textStatus, jqXHR)
 	{
 		console.log("done");
-		if (data["isNextAvailable"] === 1 && pn < 5)
+		if (data["isNextAvailable"] === 1)
 		{
 			pn++;
 			var r2 = new RegExp("[\\d]+");

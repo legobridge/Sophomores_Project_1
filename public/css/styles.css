@@ -36,6 +36,13 @@
     margin: 20px;
 }
 
+.text-field
+{
+    display: block;
+    margin: 20px auto;
+    min-width: 33%;
+}
+
 #loading
 {
     display: none;

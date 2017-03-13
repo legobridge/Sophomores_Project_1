@@ -2,6 +2,13 @@ $(document).ready(function()
 {
 	$("input").focus();
 	var inp;
+	$("#tf").keyup(function(event)
+	{
+	    if(event.keyCode == 13)
+	    {
+	        $("button").click();
+	    }
+	});
 	$("button").click(function()
 	{
         $("#loading").show("fast");
@@ -32,15 +39,12 @@ function makeRequests(url)
 
 function pageRequest(url, pn)
 {
-	console.log(pn);
-	console.log(url);
 	var parameters = {
 		"url": url
 	};
 	$.getJSON("scrape.php", parameters)
 	.done(function(data, textStatus, jqXHR)
 	{
-		console.log("done");
 		if (data["isNextAvailable"] === 1)
 		{
 			pn++;

@@ -61,3 +61,26 @@
     max-width: 7%;
     height: auto;
 }
+
+#results
+{
+    display: none;
+    margin-top: 20px;
+}
+
+table, th, td 
+{
+    border: 1px solid black;
+    text-align: center;
+}
+
+table 
+{
+    margin: 0 auto;
+    min-width: 60%;
+}
+
+th 
+{
+    height: 50px;
+}

@@ -11,6 +11,8 @@ $(document).ready(function()
 	});
 	$("button").click(function()
 	{
+		$("#results").hide();
+		$("table").find("tbody").empty();
         $("#loading").show("fast");
         inp = $("input").val();
         makeRequests(inp);
@@ -51,10 +53,12 @@ function pageRequest(url, pn)
 			var r2 = new RegExp("[\\d]+");
 			url = url.replace(r2, pn);
 
+
 			// Part of code for new style URL's
 			//
 			// var r3 = new RegExp("\\?(pn=[\\d]+)?&?");
 			// url = url.replace(r3, "?pn=" + pn + "&");
+
 
 			// If next page is available, go to it
 			pageRequest(url, pn);
@@ -62,6 +66,19 @@ function pageRequest(url, pn)
 		else
 		{
 			$("#loading").hide();
+			var l = Object.getOwnPropertyNames(data).length;
+			for (var i = 0; i < l - 1; i++)
+			{
+				var id = data[i][0];
+				var name = data[i][1];
+				var location = data[i][2];
+				var facilities = data[i][3];
+				var reviews = data[i][4];
+				
+				var exp = "<tr><td>" + id + "</td><td>" + name + "</td><td>" + location + "</td><td>" + facilities + "</td><td>" + reviews + "</td></tr>";
+				$("table").find("tbody").append(exp);
+			}
+			$("#results").show();
 		}
 	})
 	.fail(function (jqXHR, textStatus, error) 

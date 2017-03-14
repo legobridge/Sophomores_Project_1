@@ -8,5 +8,17 @@
 					<img id = "load-img" alt = "Loading, Please Wait" src = "/img/loading.gif"/>
 				</div>
 				<div id = "results">
-					
+					<table>
+						<thead>
+					        <tr>
+					            <th>No.</th>
+					            <th>College Name</th>
+					            <th>Location</th>
+					            <th>Facilities</th>
+					            <th>Reviews</th>
+					        </tr>
+					    </thead>
+					    <tbody>
+					    </tbody>
+					</table>
 				</div>

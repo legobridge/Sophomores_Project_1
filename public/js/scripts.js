@@ -1,5 +1,7 @@
 $(document).ready(function()
 {
+    $("#loading").hide();
+    $("#results").hide();
 	$("input").focus();
 	var inp;
 	$("#tf").keyup(function(event)
@@ -69,11 +71,11 @@ function pageRequest(url, pn)
 			var l = Object.getOwnPropertyNames(data).length;
 			for (var i = 0; i < l - 1; i++)
 			{
-				var id = data[i][0];
-				var name = data[i][1];
-				var location = data[i][2];
-				var facilities = data[i][3];
-				var reviews = data[i][4];
+				var id = data[i].id;
+				var name = data[i].name;
+				var location = data[i].location;
+				var facilities = data[i].facilities;
+				var reviews = data[i].reviews;
 				
 				var exp = "<tr><td>" + id + "</td><td>" + name + "</td><td>" + location + "</td><td>" + facilities + "</td><td>" + reviews + "</td></tr>";
 				$("table").find("tbody").append(exp);

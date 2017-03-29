@@ -5,7 +5,7 @@
 			    </button>
 				<div id = "loading">
 					<p id = "load-txt">Loading, Please Wait</p>
-					<img id = "load-img" alt = "Loading, Please Wait" src = "/img/loading.gif"/>
+					<img id = "load-img" alt = "Loading, Please Wait" src = "../public/img/loading.gif"/>
 				</div>
 				<div id = "results">
 					<table>

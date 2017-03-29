@@ -27,7 +27,7 @@
         $contents = file_get_contents(htmlspecialchars($url));
         preg_match("/colleges-([\\s\\S]*?)(?:-[\\d]+|$)/",$url, $matched_city);
         $city = $matched_city[1];
-        $qu = "CREATE TABLE `" . $city . "`
+        $qu = "CREATE TABLE `$city`
         	(
         		`id` INT(100) AUTO_INCREMENT,
         		`name` VARCHAR(150) NOT NULL,
@@ -39,6 +39,7 @@
         	)
         	ENGINE = InnoDB;";
         $mysqli -> query($qu);
+        
         preg_match_all("/class=\"clg-tpl-parent\"([\\s\\S]*?)Add to Compare/", $contents, $regexed);
         $colleges = $regexed[1];
         foreach($colleges as $college)
@@ -85,8 +86,10 @@
             }
 
             // Insert all data into SQL Database
-            $qu = "INSERT INTO `" . $city . "` (name, location, facilities, reviews)
-            VALUES ('". $name . "', '" . $location . "', '" . $facilities . "', '" . $reviews . "')";
+            
+            $qu = "INSERT INTO `$city` (`name`, `location`, `facilities`, `reviews`)
+            VALUES ('$name', '$location', '$facilities', '$reviews')";
+            
             $mysqli -> query($qu);
         }
 
@@ -96,11 +99,14 @@
         // If next page not available, fetch all rows from database, and return as json
         if (!$isNextAvailable)
         {
-        	$qu = "SELECT * FROM " . $city;
+        	$qu = "SELECT * FROM `$city`";
         	if ($result = $mysqli -> query($qu))
         	{
-    			$ar = $result -> fetch_all();
-    			$result->free();
+    			while($row = ($result -> fetch_assoc()))
+    			{
+    			    $ar[] = $row;
+    			}
+    			$result -> free();
 			}
         }
 

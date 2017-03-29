@@ -7,6 +7,6 @@
     // requirements
     require("helpers.php");
 
-    $mysqli = new mysqli("localhost", "sysadmin", "v1kCjsvLYytrBTGV", "scrapesha");
+    $mysqli = new mysqli("localhost", "jharvard", "crimson", "scrapesha");
 
 ?>
